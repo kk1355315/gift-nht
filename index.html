@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一份特别的生日礼物</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            color: #212529;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 650px;
+            width: 90%;
+            transform: scale(0.9);
+            animation: bounceIn 1s ease-out forwards;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        h1 {
+            color: #3498db;
+            margin-bottom: 20px;
+            font-size: 2.8em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .credentials {
+            background-color: #f9f9f9;
+            border: 1px dashed #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: left;
+        }
+        .credentials p {
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        .credentials strong {
+            color: #007bff; /* 蓝色强调 */
+        }
+        .note {
+            margin-top: 20px;
+            font-style: italic;
+            color: #777;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎂🎉 生日快乐，nht！🥳🎈</h1>
+
+        <div class="credentials">
+            <h2>
+                🎂 15个月的Google one会员 🎂
+            </h2>
+            <p><strong>邮箱:</strong> mjnhbgtvfrcdex@gmail.com </p>
+            <p><strong>密码:</strong> mjnhbgtvfrcdex7x#K9pL@2m</p>
+            <p><strong>辅助邮箱:</strong> qazwsxedcr@5201996.xyz </p>
+        </div>
+
+
+        <p class="footer">
+            再次祝你生日快乐！<br>
+        </p>
+    </div>
+</body>
+</html>
