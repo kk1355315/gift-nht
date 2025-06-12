@@ -18,6 +18,8 @@
             min-height: 100vh;
             text-align: center;
             animation: gradient 15s ease infinite;
+            position: relative;
+            overflow: hidden; /* 防止元素溢出导致滚动条 */
         }
         @keyframes gradient {
             0% {
@@ -34,12 +36,36 @@
             background-color: #fff;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
             max-width: 650px;
             width: 90%;
             transform: scale(0.9);
             animation: bounceIn 1s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
         }
+       .container::before, .container::after {
+           content: '';
+           position: absolute;
+           width: 200px;
+           height: 200px;
+           background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+           opacity: 0.7;
+           filter: blur(2px);
+       }
+
+       .container::before {
+           top: -50px;
+           left: -50px;
+           transform: rotate(45deg);
+       }
+
+       .container::after {
+           bottom: -70px;
+           right: -60px;
+           transform: rotate(225deg);
+       }
 
         @keyframes bounceIn {
             0% { transform: scale(0.3); opacity: 0; }
@@ -52,12 +78,13 @@
             margin-bottom: 20px;
             font-size: 2.8em;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            animation: pulse 2s ease-in-out infinite alternate;
+            animation: celebratory-pulse 2.5s ease-in-out infinite alternate;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
+        @keyframes celebratory-pulse {
+            0% { transform: scale(1) rotate(-2deg); text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+            50% { transform: scale(1.08) rotate(2deg); text-shadow: 3px 3px 6px rgba(0,0,0,0.2); }
+            100% { transform: scale(1) rotate(-2deg); text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
         }
         h2 {
             color: #555;
@@ -93,15 +120,87 @@
             font-size: 0.9em;
             color: #888;
         }
+       .balloon {
+           position: absolute;
+           width: 45px;
+           height: 55px;
+           background-color: rgba(255, 99, 71, 0.8);
+           border-radius: 50%;
+           animation: float 10s infinite ease-in-out;
+           box-shadow: inset -10px -10px 0 rgba(0,0,0,0.07);
+           filter: drop-shadow(2px 4px 6px black);
+           z-index: 1;
+       }
+
+       .balloon:before {
+           content: "";
+           position: absolute;
+           bottom: -65px;
+           left: 22px;
+           width: 1px;
+           height: 60px;
+           background-color: #333;
+       }
+
+       @keyframes float {
+           0% { transform: translateY(100vh) rotate(-10deg) translateX(0vw); }
+           25% { transform: translateY(75vh) rotate(10deg) translateX(5vw); }
+           50% { transform: translateY(50vh) rotate(-10deg) translateX(-5vw); }
+           75% { transform: translateY(25vh) rotate(10deg) translateX(5vw); }
+           100% { transform: translateY(-100vh) rotate(-10deg) translateX(-5vw); }
+       }
+
+       .sparkle {
+           position: absolute;
+           width: 5px;
+           height: 5px;
+           background: white;
+           border-radius: 50%;
+           pointer-events: none;
+           animation: sparkle-anim 0.8s forwards;
+           z-index: 1;
+       }
+
+       @keyframes sparkle-anim {
+           0% { transform: scale(1); opacity: 1; }
+           100% { transform: scale(3); opacity: 0; }
+       }
     </style>
 </head>
 <body>
+   <script>
+       document.addEventListener('DOMContentLoaded', () => {
+           const numBalloons = 20;
+           const body = document.querySelector('body');
+           for (let i = 0; i < numBalloons; i++) {
+               let balloon = document.createElement('div');
+               balloon.className = 'balloon';
+               balloon.style.left = `${Math.random() * 100}vw`;
+               balloon.style.animationDuration = `${Math.random() * 8 + 10}s`;
+               balloon.style.animationDelay = `${Math.random() * 5}s`;
+               balloon.style.backgroundColor = `hsla(${Math.random() * 360}, 100%, 75%, 0.8)`;
+               body.appendChild(balloon);
+           }
+
+           document.addEventListener('mousemove', (e) => {
+               let sparkle = document.createElement('div');
+               sparkle.className = 'sparkle';
+               sparkle.style.left = `${e.pageX}px`;
+               sparkle.style.top = `${e.pageY}px`;
+               sparkle.style.background = `hsla(${Math.random() * 360}, 100%, 75%, 1)`;
+               body.appendChild(sparkle);
+               setTimeout(() => {
+                   sparkle.remove();
+               }, 800);
+           });
+       });
+   </script>
     <div class="container">
         <h1>🎂🎉 生日快乐，nht！🥳🎈</h1>
 
         <div class="credentials">
             <h2>
-                🎂 15个月的Google one会员 🎂
+                🎂 15个月的Google one Pro会员 🎂
             </h2>
             <p><strong>邮箱:</strong> mjnhbgtvfrcdex@gmail.com </p>
             <p><strong>密码:</strong> mjnhbgtvfrcdex7x#K9pL@2m</p>
